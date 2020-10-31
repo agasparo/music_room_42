@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>{{ .title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ .h_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .reset_css }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="module" src="{{ .reset_js }}"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navheight">
+		<a class="navbar-brand" href="/music_room/">
+			<img src="../assets/images/logo1.png" class="img_logo" />
+		</a>
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+	<div class="reset_pass">
+		<font id="errors" color="red"></font>
+		<font id="success" color="green"></font>
+		<div class="form-group">
+      		<label for="email_user">Votre mail</label>
+      		<input type="email" class="form-control" id="email_user" aria-describedby="emailHelp" placeholder="Votre mail">
+      		<small id="emailHelp" class="form-text text-muted">Vous pouvez changer de mot de passe que si vous etes pas connecte avec une api</small>
+    	</div>
+    	<div class="form-group" {{ .hidden }}>
+      		<label for="mdp1_user">Votre nouveau mot de passe</label>
+      		<input type="password" class="form-control" id="mdp1_user" placeholder="Votre nouveau mot de passe">
+    	</div>
+    	<div class="form-group" {{ .hidden }}>
+      		<label for="mdp2_user">Repeter votre mot de passe</label>
+      		<input type="password" class="form-control" id="mdp2_user" placeholder="Repeter votre mot de passe">
+    	</div>
+    	<button class="btn btn-primary" id="send_new_pass">{{ .value_submit }}</button>
+	</div>
+	<font id="token_user" hidden="">{{ .token }}</font>
+</body>
+</html>

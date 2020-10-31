@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>{{ .title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ .h_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .s_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .r_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .m_css }}">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="module" src="{{ .userjs }}"></script>
+	<div id="dz-root"></div>
+	<script src="https://cdns-files.dzcdn.net/js/min/dz.js"></script>
+	<font id="user_here" hidden="hidden">{{ .user_id }}</font>
+</head>
+<body>
+	<nav class="navbar navbar-expand navbar-dark bg-primary navheight">
+		<a class="navbar-brand" href="/music_room/">
+			<img src="../assets/images/logo1.png" class="img_logo" />
+		</a>
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="#">{{ .premium }}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/music_room/api/">Api</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/music_room/deco">Déconnexion</a>
+				</li>
+			</ul>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+	<div class="alert alert-dismissible alert-danger" id="img_error"></div>
+	<img src="../assets/images/user_banner.jpg" class="user_banner">
+	<img src="{{ .img_user }}" class="user_img" {{ .change_p }}>
+	<div class="user">
+	<h3 class="full_name_user">{{ .user_full_name }} {{ .add_btn }}</h3>
+	<div class="user_infos">
+		<div class="div_userinfos">
+			{{ .userinfos }}
+		</div>
+		<div class="div_userinfos">
+			{{ .user_params }}
+		</div>
+		<div class="div_userinfos">
+			{{ .user_img }}
+		</div>
+	</div>
+	<div class="user_music">
+		<h6>Musique Preferee</h6>		
+		<div class="music_modify">
+			{{ .add_music }}
+			<table class="table table-hover table_user_music">
+				<thead>
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Titre</th>
+					</tr>
+				</thead>
+				<tbody id="recept_music">
+					{{ .music_user }}
+				</tbody>
+			</table>
+		</div>
+		<div class="musci_bloc_show">
+			<div class="bloc_gal">
+				{{ .music_panel }}
+			</div>
+		</div>
+	</div>
+	<div class="padd"></div>
+	</div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary bottom navheight">
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+</body>
+</html>

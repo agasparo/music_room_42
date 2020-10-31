@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>{{ .title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ .h_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .404_css }}">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="module" src="{{ .404_js }}"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navheight">
+		<a class="navbar-brand" href="/music_room/">
+			<img src="assets/images/logo1.png" class="img_logo" />
+		</a>
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+	<i class="fa fa-music img_clicker" aria-hidden="true" id="clicker"></i>
+	<div class="clicker_res"><font id="clicker_content">0</font> note(s) (<font id="current_per_s">0</font> note(s) par seconde)</div>
+	<div class="shop">
+		<h1>Shop Musique</h1>
+		<div class="flexon">
+			<div class="shop_bloc">
+				<img src="assets/images/level00.png" class="shop_img">
+				<p class="shop_how_many"><font id="1_many">0</font>&nbsp; possede(s)</p>
+				<p class="shop_buy" data-id="1">achetter une voix (12 notes) (1 note par s)</p>
+			</div>
+			<div class="shop_bloc">
+				<img src="assets/images/partition.jpg" class="shop_img">
+				<p class="shop_how_many"><font id="2_many">0</font>&nbsp; possede(s)</p>
+				<p class="shop_buy" data-id="2">achetter une partition (120 notes) (5 note par s)</p>
+			</div>
+			<div class="shop_bloc">
+				<img src="assets/images/instru.jpg" class="shop_img">
+				<p class="shop_how_many"><font id="3_many">0</font>&nbsp; possede(s)</p>
+				<p class="shop_buy" data-id="3">achetter une instru (1200 notes) (10 note par s)</p>
+			</div>
+			<div class="shop_bloc">
+				<img src="assets/images/musique.jpg" class="shop_img">
+				<p class="shop_how_many"><font id="4_many">0</font>&nbsp; possede(s)</p>
+				<p class="shop_buy" data-id="4">achetter une chanson (12000 notes) (15 note par s)</p>
+			</div>
+		</div>
+	</div>
+	<div class="upgrade">
+		<h6>Upgrade Musique</h6>
+		<div class="flexon_upgrade">
+			<div class="shop_bloc">
+				<img src="assets/images/note.jpg" class="shop_img">
+				<p class="shop_how_many" id="up_1">non possede ( 10000 notes )</p>
+				<p class="buy_upgrade" data-id="1"> + 10 notes par s pour la voix</p>
+			</div>
+			<div class="shop_bloc">
+				<img src="assets/images/lyrics.png" class="shop_img">
+				<p class="shop_how_many" id="up_2">non possede ( 25000 notes )</p>
+				<p class="buy_upgrade" data-id="2"> + 50 notes par s pour la partition</p>
+			</div>
+			<div class="shop_bloc">
+				<img src="assets/images/guitard.jpeg" class="shop_img">
+				<p class="shop_how_many" id="up_3">non possede ( 30000 notes )</p>
+				<p class="buy_upgrade" data-id="3"> + 100 notes par s pour l'instru</p>
+			</div>
+			<div class="shop_bloc">
+				<img src="assets/images/concert.jpg" class="shop_img">
+				<p class="shop_how_many" id="up_4">non possede ( 50000 notes )</p>
+				<p class="buy_upgrade" data-id="4"> + 150 notes par s pour la chanson</p>
+			</div>
+		</div>
+	</div>
+	<section>
+		<div class="wave wave1"></div>
+		<div class="wave wave2"></div>
+		<div class="wave wave3"></div>
+		<div class="wave wave4"></div>
+	</section>
+</body>
+</html>

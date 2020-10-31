@@ -1,0 +1,9 @@
+<div class="form-group">
+	<label for="setShow">Visibilité :</label>
+	<select class="form-control" id="setShow" {{ .change }}>
+		<option value="3" {{ .value_perms_p }}>Public</option>
+		<option value="1" {{ .value_perms_a }}>Amis (followers)</option>
+		<option value="2" {{ .value_perms_pr }}>Privee</option>
+	</select>
+</div>
+{{ .save_params }}

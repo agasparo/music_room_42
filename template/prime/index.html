@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>{{ .title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ .h_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .scroll_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .prime }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ .js }}"></script>
+	<script type="text/javascript" src="{{ .scroll_js }}"></script>
+	<script type="text/javascript" src="{{ .prime_js }}"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navheight">
+		<a class="navbar-brand" href="/music_room/">
+			<img src="assets/images/logo1.png" class="img_logo" />
+		</a>
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+
+	<div class="jumbotron prime_desc">
+	  <h1 class="display-3">Music room Prime</h1>
+	  <p class="lead">
+	  	<br>
+	  	Écoutez votre musique hors connexion, parler avec des amis grace a des emojis, ...
+	  	<br>
+	  	Tout ce que vous desirez ce trouve dans ce pack
+	  </p>
+	  <hr class="my-4">
+	  <p>10.00€/mois, Facturation récurrente • pas d'annulation possible</p>
+	  <br>
+	  <a class="btn btn-primary btn-lg" href="#" role="button" id="prime_ok">payer</a>
+	</div>
+	<div hidden="hidden" id="frg"></div>
+</body>
+</html>

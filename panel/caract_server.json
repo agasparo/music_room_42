@@ -1,0 +1,15 @@
+{
+	"server": {
+		"Processor Name": "Quad-Core Intel Core i7",
+		"Number of Processors": 1,
+		"Total Number of Cores": 4,
+		"Memory": "8 GB",
+		"Processor Speed": "2,6 GHz"
+	},
+	"Apache Benchmark": {
+
+	},
+	"user": {
+		"max_user": 1000
+	}
+}

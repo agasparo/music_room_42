@@ -1,0 +1,68 @@
+body {
+	  font-family: Arial, Helvetica, sans-serif;
+	  background-color: #000;
+	  color: #FFF;
+	  display: flex;
+	  margin: 0;
+	  padding: 0;
+	  align-items: center;
+	  justify-content: center;
+	  height: 100vh;
+	}
+
+	.flip-card {
+	  background-color: transparent;
+	  width: 50%;
+	  height: 20%;
+	  min-height: 300px;
+	  perspective: 1000px;
+	  box-shadow: 0 4px 8px 0 orange;
+	}
+
+	.flip-card-inner {
+	  position: relative;
+	  width: 100%;
+	  height: 100%;
+	  text-align: center;
+	  transition: transform 0.6s;
+	  transform-style: preserve-3d;
+	  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	}
+
+	.flip-card-front, .flip-card-back {
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	  -webkit-backface-visibility: hidden;
+	  backface-visibility: hidden;
+	}
+
+	.flip-card-front {
+	  background-color: #1a1a1a;
+	  color: #FFF;
+	}
+
+	.flip-card-back {
+	  background-color: #1a1a1a;
+	  color: #FFF;
+	  transform: rotateY(180deg);
+	}
+
+	#timer_blind_test {
+		font-size: 7vh;
+	}
+
+	#img_response {
+
+		position: relative;
+		left: 0;
+		width: 90%;
+		max-height: 80%;
+	}
+
+	@media screen and (max-width: 992px) {
+		#timer_blind_test {
+		font-size: 4vh;
+	}
+
+	}

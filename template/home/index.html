@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>{{ .title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ .h_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .scroll_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .s_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .m_css }}">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet"> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ .js }}"></script>
+	<script type="module" src="{{ .form_js }}"></script>
+	<script type="text/javascript" src="{{ .scroll_js }}"></script>
+	<div id="dz-root"></div>
+	<script src="https://cdns-files.dzcdn.net/js/min/dz.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navheight">
+		<a class="navbar-brand" href="#">
+			<img src="assets/images/logo1.png" class="img_logo" />
+		</a>
+		<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/music_room/user/{{ .id_user }}">Mon Profil</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/music_room/deco">Déconnexion</a>
+				</li>
+			</ul>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+	{{ .connection }}
+	<div class="main">
+		<div id="rooms">
+			<h3>Liste des rooms disponibles <i class="fa fa-plus" aria-hidden="true" id="new_room">NEW</i></h3>
+			<div class="containers" id="rooms_top">
+				{{ .rooms_data }}
+			</div>
+		</div>
+
+		<div id="top_music">
+			<h3>Liste des musiques les plus ecoutees</h3>
+			<div class="containers" id="music_top"></div>
+		</div>
+
+		<div id="top_playliste">
+			<h3>Music du theme de la semaine (electro)</h3>
+			<div class="containers" id="playlist_top"></div>
+		</div>
+
+		<br><br><br><br><br><br>
+	</div>
+	<nav class="navbar navbar-expand navbar-dark bg-primary bottom navheight">
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+	{{ .new_room }}
+</body>
+</html>

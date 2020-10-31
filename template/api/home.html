@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ .title }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ .h_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .b_css }}">
+	<link href="{{ .json_css }}" type="text/css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="{{ .json_js }}"></script>
+	<script type="text/javascript" src="{{ .js }}"></script>
+	<script type="module" src="{{ .b_js }}"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navheight">
+		<a class="navbar-brand" href="/music_room/">
+			<img src="../assets/images/logo1.png" class="img_logo" />
+		</a>
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+	<div id="testApi">
+		<h3>Tester l'api</h3>
+		<hr />
+		<div class="params_test" id="params_response">
+			
+		</div>
+		<img src="../assets/images/loader.gif" class="loader">
+		<pre class="json-document" id="response_test"></pre>
+	</div>
+	<div class="documentation">
+		<div class="padd">
+			<h3>Connexion a l'api</h3>
+			<hr />
+			<p class="text-primary">
+				<h5 class="padd_txt">1 * Generer un token</h5>
+				<br>
+				<div class="form-group">
+				  <fieldset>
+				    <label class="control-label" for="token_visu">Votre token</label>
+				    <input class="form-control" id="token_visu" type="text" placeholder="your token..." readonly=""><br>
+				  </fieldset>
+				  <br>
+				  <fieldset>
+				    <label class="control-label" for="api_id_visu">Votre identifiant api</label>
+				    <input class="form-control" id="api_id_visu" type="text" placeholder="api id..." readonly=""><br>
+				    <button class="btn btn-primary" id="generateKeys">Generer</button>
+				  </fieldset>
+				</div>
+				<br>
+				Votre token et votre api key doivent etre mis a chaque requette
+			</p>
+			<h3>Lyrics</h3>
+			<hr />
+			<p class="text-primary">
+				L'api music room a une partie consacree au lyrics, il y a deux routes possibles :
+				<br>
+				<h5 class="padd_txt">1 * Recuprer tout les lyrics</h5>
+				<br>
+				<h6 class="padd_txt">Les parametre(s)</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">myToken</th>
+				      		<td><code>string</code></td>
+				      		<td>votre token</td>
+				    	</tr>
+				    	<tr class="table-active">
+				    		<td scope="row">apiKey</td>
+				    		<td><code>string</code></td>
+				    		<td>votre api key</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Le retour</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">content</th>
+				      		<td><code>Json</code></td>
+				      		<td>
+				      			Le retour est un json avec en parametres :<br>
+				      			- <code>status</code> : int (200 si tout est ok)<br>
+				      			- <code>number_results</code> : int le nombres de resultats trouves<br>
+				      			- <code>response_time</code> : float le temps de reponse de l'api<br>
+				      			- <code>encode</code> : array si il y a une encodage, il contiendra la fonction de d'encodage<br>
+				      			- <code>response</code> : array contient la reponse
+				      		</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Essayer</h6>
+			   		Pour tester le code clicker <code class="clickable" id="lyrics_all">ici</code> et utiliser la fenetre de test
+			   	<br>
+			   	<h6 class="padd_txt">Le code</h6>
+				<pre class="prettyprint lang-js">
+const url = "http://localhost/music_room/api/lyrics/all";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+  				</pre>
+  				<br>
+  				<h5 class="padd_txt">2 * Recuprer les lyrics par titre</h5>
+				<br>
+				<h6 class="padd_txt">Les parametre(s)</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">name</th>
+				      		<td><code>string</code></td>
+				      		<td>le nom est le titre de la musique ou l'auteur</td>
+				    	</tr>
+				    	<tr class="table-active">
+				      		<th scope="row">myToken</th>
+				      		<td><code>string</code></td>
+				      		<td>votre token</td>
+				    	</tr>
+				    	<tr class="table-active">
+				    		<td scope="row">apiKey</td>
+				    		<td><code>string</code></td>
+				    		<td>votre api key</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Le retour</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">content</th>
+				      		<td><code>Json</code></td>
+				      		<td>
+				      			Le retour est un json avec en parametres :<br>
+				      			- <code>status</code> : int (200 si tout est ok)<br>
+				      			- <code>number_results</code> : int le nombres de resultats trouves<br>
+				      			- <code>response_time</code> : float le temps de reponse de l'api<br>
+				      			- <code>encode</code> : array si il y a une encodage, il contiendra la fonction de d'encodage<br>
+				      			- <code>response</code> : array contient la reponse
+				      		</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Essayer</h6>
+			   		Pour tester le code clicker <code class="clickable" id="lyrics_name">ici</code> et utiliser la fenetre de test
+			   	<br>
+			   	<h6 class="padd_txt">Le code</h6>
+				<pre class="prettyprint lang-js">
+const url = "http://localhost/music_room/api/lyrics/get_by_name/dababy";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+  				</pre>
+			</p>
+			<br><br>
+			<h3>Mcdo</h3>
+			<hr />
+			<p class="text-primary">
+				L'api music room a une partie consacree a Mcdo au niveau de la commande :
+				<br>
+				<h5 class="padd_txt">1 * Recuprer tout les produits</h5>
+				<br>
+				<h6 class="padd_txt">Les parametre(s)</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">myToken</th>
+				      		<td><code>string</code></td>
+				      		<td>votre token</td>
+				    	</tr>
+				    	<tr class="table-active">
+				    		<td scope="row">apiKey</td>
+				    		<td><code>string</code></td>
+				    		<td>votre api key</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Le retour</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">content</th>
+				      		<td><code>Json</code></td>
+				      		<td>
+				      			Le retour est un json avec en parametres :<br>
+				      			- <code>status</code> : int (200 si tout est ok)<br>
+				      			- <code>number_results</code> : int le nombres de resultats trouves<br>
+				      			- <code>response_time</code> : float le temps de reponse de l'api<br>
+				      			- <code>encode</code> : array si il y a une encodage, il contiendra la fonction de d'encodage<br>
+				      			- <code>response</code> : array contient la reponse
+				      		</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Essayer</h6>
+			   		Pour tester le code clicker <code class="clickable" id="mcdo_all">ici</code> et utiliser la fenetre de test
+			   	<br>
+			   	<h6 class="padd_txt">Le code</h6>
+				<pre class="prettyprint lang-js">
+const url = "http://localhost/music_room/api/mcdo/all";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+  				</pre>
+  				<br>
+  				<h5 class="padd_txt">2 * Recuprer les produits par categorie</h5>
+				<br>
+				<h6 class="padd_txt">Les parametre(s)</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				    	<tr class="table-active">
+				      		<th scope="row">myToken</th>
+				      		<td><code>string</code></td>
+				      		<td>votre token</td>
+				    	</tr>
+				    	<tr class="table-active">
+				    		<td scope="row">apiKey</td>
+				    		<td><code>string</code></td>
+				    		<td>votre api key</td>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">categ</th>
+				      		<td><code>string</code></td>
+				      		<td>la categorie : <br>
+				      			- <code>burgers</code><br>
+								- <code>salades</code><br>
+								- <code>petite-faim</code><br>
+								- <code>boissons</code><br>
+								- <code>desserts</code><br>
+								- <code>sauces</code><br>
+								- <code>grandes-salades</code>
+				      		</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Le retour</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">content</th>
+				      		<td><code>Json</code></td>
+				      		<td>
+				      			Le retour est un json avec en parametres :<br>
+				      			- <code>status</code> : int (200 si tout est ok)<br>
+				      			- <code>number_results</code> : int le nombres de resultats trouves<br>
+				      			- <code>response_time</code> : float le temps de reponse de l'api<br>
+				      			- <code>encode</code> : array si il y a une encodage, il contiendra la fonction de d'encodage<br>
+				      			- <code>response</code> : array contient la reponse
+				      		</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Essayer</h6>
+			   		Pour tester le code clicker <code class="clickable" id="mcdo_name">ici</code> et utiliser la fenetre de test
+			   	<br>
+			   	<h6 class="padd_txt">Le code</h6>
+				<pre class="prettyprint lang-js">
+const url = "http://localhost/music_room/api/mcdo/categ/salades";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+  				</pre>
+			</p>
+			<br><br>
+			<h3>Musique</h3>
+			<hr />
+			<p class="text-primary">
+				L'api music room a une partie consacree a Mcdo au niveau de la commande :
+				<br>
+				<h5 class="padd_txt">1 * Recuprer toutes les musiques</h5>
+				<br>
+				<h6 class="padd_txt">Les parametre(s)</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">myToken</th>
+				      		<td><code>string</code></td>
+				      		<td>votre token</td>
+				    	</tr>
+				    	<tr class="table-active">
+				    		<td scope="row">apiKey</td>
+				    		<td><code>string</code></td>
+				    		<td>votre api key</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Le retour</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">content</th>
+				      		<td><code>Json</code></td>
+				      		<td>
+				      			Le retour est un json avec en parametres :<br>
+				      			- <code>status</code> : int (200 si tout est ok)<br>
+				      			- <code>number_results</code> : int le nombres de resultats trouves<br>
+				      			- <code>response_time</code> : float le temps de reponse de l'api<br>
+				      			- <code>encode</code> : array si il y a une encodage, il contiendra la fonction de d'encodage<br>
+				      			- <code>response</code> : array contient la reponse
+				      		</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Essayer</h6>
+			   		Pour tester le code clicker <code class="clickable" id="music_all">ici</code> et utiliser la fenetre de test
+			   	<br>
+			   	<h6 class="padd_txt">Le code</h6>
+				<pre class="prettyprint lang-js">
+const url = "http://localhost/music_room/api/music/all";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+  				</pre>
+  				<br>
+  				<h5 class="padd_txt">2 * Recuprer les produits par auteur, id, titre</h5>
+				<br>
+				<h6 class="padd_txt">Les parametre(s)</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">artist</th>
+				      		<td><code>string</code></td>
+				      		<td>l'artiste</td>
+				    	</tr>
+				    	<tr class="table-active">
+				      		<th scope="row">id</th>
+				      		<td><code>string</code></td>
+				      		<td>l'id de la musique</td>
+				    	</tr>
+				    	<tr class="table-active">
+				      		<th scope="row">titre</th>
+				      		<td><code>string</code></td>
+				      		<td>le titre de la musique</td>
+				    	</tr>
+				    	<tr class="table-active">
+				      		<th scope="row">myToken</th>
+				      		<td><code>string</code></td>
+				      		<td>votre token</td>
+				    	</tr>
+				    	<tr class="table-active">
+				    		<td scope="row">apiKey</td>
+				    		<td><code>string</code></td>
+				    		<td>votre api key</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Le retour</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">content</th>
+				      		<td><code>Json</code></td>
+				      		<td>
+				      			Le retour est un json avec en parametres :<br>
+				      			- <code>status</code> : int (200 si tout est ok)<br>
+				      			- <code>number_results</code> : int le nombres de resultats trouves<br>
+				      			- <code>response_time</code> : float le temps de reponse de l'api<br>
+				      			- <code>encode</code> : array si il y a une encodage, il contiendra la fonction de d'encodage<br>
+				      			- <code>response</code> : array contient la reponse
+				      		</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Essayer</h6>
+			   		Pour tester le code (id) clicker <code class="clickable" id="music_id">ici</code> et utiliser la fenetre de test<br>
+			   		Pour tester le code (titre) clicker <code class="clickable" id="music_title">ici</code> et utiliser la fenetre de test<br>
+			   		Pour tester le code (artiste) clicker <code class="clickable" id="music_artist">ici</code> et utiliser la fenetre de test
+			   	<br>
+			   	<h6 class="padd_txt">Le code</h6>
+				<pre class="prettyprint lang-js">
+//************************* id ***************************//
+const url = "http://localhost/music_room/api/music/id/83xBPCw5hh4";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+//************************* titre ***************************//
+const url = "http://localhost/music_room/api/music/artist/naps";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+//************************* auteur ***************************//
+const url = "http://localhost/music_room/api/music/title/a";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+  				</pre>
+			</p>
+			<br>
+			<h5 class="padd_txt">3 * Recuprer toutes les stats et infos sur les musiques</h5>
+				<br>
+				<h6 class="padd_txt">Les parametre(s)</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">myToken</th>
+				      		<td><code>string</code></td>
+				      		<td>votre token</td>
+				    	</tr>
+				    	<tr class="table-active">
+				    		<td scope="row">apiKey</td>
+				    		<td><code>string</code></td>
+				    		<td>votre api key</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Le retour</h6>
+				<table class="table table-hover">
+				  	<thead>
+				    	<tr>
+				    	  	<th scope="col">Nom</th>
+				    	  	<th scope="col">Type</th>
+				    	  	<th scope="col">Description</th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+				    	<tr class="table-active">
+				      		<th scope="row">content</th>
+				      		<td><code>Json</code></td>
+				      		<td>
+				      			Le retour est un json avec en parametres :<br>
+				      			- <code>status</code> : int (200 si tout est ok)<br>
+				      			- <code>number_results</code> : int le nombres de resultats trouves<br>
+				      			- <code>response_time</code> : float le temps de reponse de l'api<br>
+				      			- <code>encode</code> : array si il y a une encodage, il contiendra la fonction de d'encodage<br>
+				      			- <code>response</code> : array contient la reponse
+				      		</td>
+				    	</tr>
+				   	</tbody>
+			   	</table>
+			   	<br>
+			   	<h6 class="padd_txt">Essayer</h6>
+			   		Pour tester le code clicker <code class="clickable" id="music_stats">ici</code> et utiliser la fenetre de test
+			   	<br>
+			   	<h6 class="padd_txt">Le code</h6>
+				<pre class="prettyprint lang-js">
+const url = "http://localhost/music_room/api/music/statistic";
+$.get(url, {
+	myToken: "{ yourToken }",
+	apiKey: "{ yourApiKey }"
+}, function (content) {
+	
+	console.log(content);
+
+});
+  				</pre>
+		</div>
+	</div>
+</body>
+</html>

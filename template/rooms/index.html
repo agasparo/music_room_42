@@ -1,0 +1,150 @@
+<html>
+<head>
+	<title>{{ .title }}</title>
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+	<link rel="stylesheet" type="text/css" href="{{ .h_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .s_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .r_css }}">
+	<link rel="stylesheet" type="text/css" href="{{ .m_css }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script type="module" src="{{ .roomsjs }}"></script>
+	<script src="https://cdns-files.dzcdn.net/js/min/dz.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navheight">
+		<a class="navbar-brand" href="/music_room/">
+			<img src="../assets/images/logo1.png" class="img_logo" />
+		</a>
+		<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/music_room/user/{{ .id_user }}">Mon Profil</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/music_room/deco">Déconnexion</a>
+				</li>
+			</ul>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+		</div>
+	</nav>
+	<div class="cache_sound" id="soundCollector">
+		<p class="text_show">vous allez entrer dans la room</p>
+		<button class="btn btn-primary enablesound" id="soundok">Rentrer</button>
+	</div>
+	<i class="fa fa-user tool_icon_bar" aria-hidden="true" id="members_icon" title="utilisateurs"></i>
+	<i class="fa fa-comments tool_icon_bar" aria-hidden="true" id="chat_icon" title="chat"></i>
+	<i class="fa fa-list-ul tool_icon_bar" aria-hidden="true" id="playlist_icon" title="playlist"></i>
+	<i class="fa fa-film tool_icon_bar" aria-hidden="true" id="video_icon" title="video"></i>
+	<i class="fa fa-align-left tool_icon_bar" aria-hidden="true" id="lyrics_icon" title="lyrics"></i>
+	<i class="fa fa-cog tool_icon_bar" aria-hidden="true" id="para_icon" title="parametres"></i>
+	<i class="fa fa-shopping-cart tool_icon_bar" aria-hidden="true" id="food_icon" title="fast food"></i>
+	<div id="rooms_members" data-room="{{ .room_datas }}">
+		<i class="fa fa-arrow-left close_members" aria-hidden="true" id="close_m"></i>
+		<br><br>
+		{{ .membres }}
+	</div>
+	<div id="rooms_params">
+		<i class="fa fa-arrow-left close_members" aria-hidden="true" id="close_params"></i>
+		<br><br>
+		{{ .parameters }}
+	</div>
+	<div id="rooms_fats_food">
+		<i class="fa fa-arrow-left close_members" aria-hidden="true" id="close_fast_food"></i>
+		<br><br>
+		<table class="table table-hover">
+		  <thead>
+		    <tr class="table-active">
+			    <td class="mcdo_menu">burgers</td>
+			    <td class="mcdo_menu">salades</td>
+			    <td class="mcdo_menu">petite-faim</td>
+			    <td class="mcdo_menu">boissons</td>
+		    </tr>
+		    <tr class="table-active">
+			    <td class="mcdo_menu">desserts</td>
+			    <td class="mcdo_menu">sauces</td>
+			    <td class="mcdo_menu">grandes-salades</td>
+			    <td class="mcdo_menu">commande</td>
+		    </tr>
+		  </thead>
+		</table>
+		<div id="menu_content_mcdo"></div>
+	</div>
+	<div class="alert alert-dismissible alert-primary" id="AlertMembers">
+  		<strong>Dites Bonjour !</strong> un nouveau membre vient d'arriver sur la room
+	</div>
+	<div class="alert alert-dismissible alert-success" id="AlertCommandeMcdoS">
+  		<strong>Article ajoute :</strong> <font id="mcdo_comm_val"></font>
+	</div>
+	<div class="alert alert-dismissible alert-danger" id="AlertCommandeMcdoF">
+  		<strong>Erreur :</strong> article non ajoute
+	</div>
+	<div class="alert alert-dismissible alert-success" id="AlertCommandeMcdoSendS">
+  		<strong>Message envoye :</strong> <font id="mcdo_send_val"></font>
+	</div>
+	<div class="alert alert-dismissible alert-danger" id="AlertCommandeMcdoSendF">
+  		<strong>Erreur :</strong> message non envoye
+	</div>
+	<div id="chache_player">
+		<div id="room_lyrics">
+			<h4>Lyrics</h4>
+			<div id="lyrics_text">
+				Pas de lyrics dispo...
+			</div>
+		</div>
+		<div id="room_chat">
+			<h4>Chat</h4>
+			<div id="chat_body"></div>
+			<div id="gif_show">
+				<div class="form-group">
+					<input type="text" id="gifs_search" placeholder="chercher un gif" class="form-control">
+				</div>
+			</div>
+			<div id="emoji_show">
+				<div class="form-group">
+					<input type="text" id="emojis_search" placeholder="chercher un emoji" class="form-control">
+				</div>
+			</div>
+			<div id="chat_bottom">
+				<font color="red" id="err_msg_chat"></font>
+				<div class="form-group">
+			      <textarea class="form-control" id="chat_room_input" placeholder="votre message ..."></textarea>
+			    </div>
+			    <img src="https://img.icons8.com/nolan/64/gif.png" id="img_gif" />
+			    <img src="https://img.icons8.com/emoji/48/000000/grinning-squinting-face--v2.png" id="img_emoji" />
+			</div>
+		</div>
+		<div class="playlist_room">
+			<h4>Playlist</h4>
+			<div id="room_playlist_current"></div>
+		</div>
+	</div>
+	<div id="player" data-begin="{{ .gol }}"></div>
+	<nav class="navbar navbar-expand navbar-dark bg-primary bottom navheight">
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<div id="progress_bar_div">
+				<div id="progress_bar"></div>
+			</div>
+			<i class="fa fa-backward icon_lecteur" aria-hidden="true" id="playlist_prev"></i>
+			<i class="fa fa-play icon_lecteur" aria-hidden="true" id="lecteur_state"></i>
+			<i class="fa fa-forward icon_lecteur" aria-hidden="true" id="lecteur_next"></i>
+			<i id="lecteur_timer">00:00:00 / 00:00:00</i>
+			<div class="div_data">
+				<img src="" id="img_current_music">
+				<i id="title_current_music">titre de la musique</i>
+			</div>
+			<div class="sound_div">
+				<i class="fa fa-volume-up icon_lecteur" aria-hidden="true" id="lecteur_audio"></i>
+				<input type="range" id="autio_st">
+			</div>
+		</div>
+	</nav>
+	<script type="text/javascript">
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/player_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	</script>
+</body>
+</html>

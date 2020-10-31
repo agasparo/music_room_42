@@ -1,0 +1,27 @@
+<div class="cache"></div>
+<div id="form_ins_co">
+	<p class="lead">{{ .title }}</p>
+	<hr>
+	<form class="form_co" id="form_co">
+		<font color="red" id="error_form"></font>
+		<fieldset>
+			<div class="form-group">
+		      <label for="mail_co">{{ .input1 }}</label>
+		      <input type="text" class="form-control" id="mail_co" placeholder="{{ .input1 }}" maxlength={{ .s1 }}>
+		    </div>
+		    <br>
+		    <div class="form-group">
+		      <label for="pass_co">{{ .input2 }}</label>
+		      <input type="password" class="form-control" id="pass_co" autocomplete="" placeholder="{{ .input2 }}" maxlength={{ .s2 }}>
+		    </div>
+		    <div >
+		    	<img src="assets/images/logo_deezer.png" class="co_logo" id="deezer_connexion">
+		    	<img src="assets/images/logo_google.png" class="co_logo" id="google_connexion">
+		    	<img src="assets/images/logo_facebook.png" class="co_logo" id="facebook_connexion">
+		    </div>
+		    <br>
+		    <button type="submit" class="btn btn-primary" id="post_form_co" value="co_form">{{ .submit }}</button>
+		     <p id="mdp_oublier"><a href="/music_room/reset_mdp/new">{{ .mdp_oubli }}</a></p>
+		</fieldset>
+	</form>
+</div>

@@ -1,0 +1,7 @@
+{
+	"DB_HOST": "localhost",
+	"DB_NAME": "music_room",
+	"DB_DSN": "mysql:host=localhost;dbname=music_room;charset=utf8",
+	"DB_USER": "root",
+	"DB_PASSWORD": ""
+}

@@ -1,0 +1,81 @@
+/* On screens that are 992px or less*/
+@media screen and (max-width: 992px) {
+
+  body {
+  }
+  /*  ALL  */
+   body p, i{
+  }
+
+  .navbar-nav {
+	flex-direction: initial;
+  }
+
+  /* INDEX */
+  .bloc {
+    position: relative;
+    top: 1%;
+    height: 65%;
+    max-width: 33%;
+  }
+  #rooms {
+  	height: 25%;
+  }
+
+  #top_music {
+  	height: 25%;
+  }
+
+  #top_playliste {
+  	height: 25%;
+  }
+
+  /*  ROOM  */
+
+  #rooms_fats_food {
+    width: 50%;
+  }
+
+  #rooms_members {
+    width: 50%;
+  }
+
+  #rooms_params {
+    width: 50%;
+  }
+  #room_chat p ,#room_chat i {
+    font-size: 20px;
+  }
+
+
+  #lyrics_text{
+  	font-size: 20px;
+  }
+
+
+  
+  .playlist_room {
+  	width: 35vw;
+  }
+  .div_playlist p {
+    margin: 1% 10% 2% 40%;
+    font-size: 18px;
+  }
+  .img_playlist {
+  	top: 30%;
+  	height: 40%;
+  }
+  .playing {
+    height: 5vh;
+    width: 4vh;
+    left: 3%;
+    top: 8%;
+}
+
+  /*  USER  */
+  .user {
+  	top: 5%;
+  }
+
+}
+

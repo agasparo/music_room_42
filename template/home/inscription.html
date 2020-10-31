@@ -1,0 +1,32 @@
+<div class="cache"></div>
+<div id="form_ins_co">
+	<p class="lead">{{ .title }}</p>
+	<hr>
+	<form class="form_insc" id="form_insc">
+		<font color="red" id="error_form"></font>
+		<fieldset>
+			<div class="form-group">
+		      <label for="nom_insc">{{ .input1 }}</label>
+		      <input type="text" class="form-control" id="nom_insc" placeholder="{{ .input1 }}" maxlength={{ .s1 }}>
+		    </div>
+		    <div class="form-group">
+		      <label for="prenom_insc">{{ .input2 }}</label>
+		      <input type="text" class="form-control" id="prenom_insc" placeholder="{{ .input2 }}" maxlength={{ .s1 }}>
+		    </div>
+			<div class="form-group">
+		      <label for="mail_insc">{{ .input3 }}</label>
+		      <input type="text" class="form-control" id="mail_insc" placeholder="{{ .input3 }}" maxlength={{ .s1 }}>
+		    </div>
+		    <div class="form-group">
+		      <label for="pass_insc">{{ .input4 }}</label>
+		      <input type="password" class="form-control" id="pass_insc" autocomplete="" placeholder="{{ .input4 }}" maxlength={{ .s2 }}>
+		  	</div>
+		    <div class="form-group">
+		      <label for="pass2_insc">{{ .input5 }}</label>
+		      <input type="password" class="form-control" id="pass2_insc" autocomplete="" placeholder="{{ .input5 }}" maxlength={{ .s2 }}>
+		    </div>
+		    <br>
+		    <button type="submit" class="btn btn-primary" id="post_form_ins" value="co_form">{{ .submit }}</button>
+		</fieldset>
+	</form>
+</div>

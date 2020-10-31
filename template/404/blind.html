@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>404 - not found</title>
+	<link rel="stylesheet" type="text/css" href="/music_room/assets/css/blind.css">
+</head>
+<body>
+	<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+    <p id="point_user">0 point(s) / 10</p>
+	<p id="round_user">round 0</p>
+      <p id="timer_blind_test">15</p> 
+      <input type="text" name="" placeholder="Votre reponse" id="response_user">
+    </div>
+    <div class="flip-card-back">
+    	<img src="" id="img_response">
+    	<p id="para_response"></p>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+		var tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/player_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	const api_key = "TOKEN";
+	let playlist = [];
+	let interval;
+	let time = 15;
+	let round = 0;
+	let preview;
+	let point = 0;
+	let resp = false;
+
+	window.onYouTubePlayerAPIReady = () => {
+
+		const id_p = [
+			"PLaLWNpJCbH_o5BXR4quVluHs29iEvzo_O",
+			"PL6Go6XFhidEAnRtiwjAcSrmPi0vPnqVpL",
+			"PLhp9gj0sRcTxfqPOkOJRJ6ql1oSKQ9ra0",
+			"PLD7SPvDoEddadenVZYBvq0uqSN1RRmFol",
+			"PLxI6IWh7Z6bqIMMIzWyVMcgrfEj6K43i5"
+		];
+
+		getSongs(id_p[getRandomInt(0, 4)]);
+
+		document.getElementById('response_user').onkeypress = (event) => {
+
+			if (event.which == 13 || event.keyCode == 13) {
+
+				const user_input = document.getElementById('response_user');
+				check_response(user_input.value);
+				user_input.value = "";
+			}
+		}
+	}
+
+	function getRandomInt(min, max) {
+    	min = Math.ceil(min);
+    	max = Math.floor(max);
+    	return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	function resp_title(title) {
+
+		title = title.replace(/ *\([^)]*\) */g, "").replace("-", "");
+		return (title);	
+	}
+
+	function check_response(response) {
+
+		if (playlist[round].title.toLowerCase().indexOf(response.toLowerCase()) !== -1 && !resp) {
+			point++;
+			resp = true;
+			document.getElementById('point_user').innerText = point.toString() + " point(s) / 10";
+		}
+	}
+
+	function getSongs(playlist_id) {
+
+		$.get('https://www.googleapis.com/youtube/v3/playlistItems', {
+			key: api_key,
+		    part: "snippet",
+		    maxResults: 10,
+		    playlistId: playlist_id,
+		    type: "music",
+		    format: 5
+		}, function(content) {
+
+			if (!content.items)
+				return;
+			for (let i = 0; i < content.items.length; i++) {
+				playlist.push({
+					id: content.items[i].snippet.resourceId.videoId,
+					img: content.items[i].snippet.thumbnails.high.url,
+					title: resp_title(content.items[i].snippet.title)
+				});
+			}
+			init_round();
+		});
+	}
+
+	function init_round() {
+
+		document.getElementById('round_user').innerText = "round " + (round + 1).toString();
+		if (round === 0)
+			player_404(playlist[round].id);
+		else
+			preview.loadVideoById(playlist[round].id, 30);
+	}
+
+	function run_round(event) {
+
+		if (event.data === 1) {
+			time = 15;
+			resp = false;
+			interval = setInterval(setTimer, 1000);
+		}
+	}
+
+	function setTimer() {
+		
+		if (time === 1) {
+			clearInterval(interval);
+			document.querySelector('.flip-card-inner').style.transform = "rotateY(180deg)";
+			show_response();
+			setTimeout(function() {
+				preview.pauseVideo();
+				round++;
+				if (playlist[round]) {
+					document.querySelector('.flip-card-inner').style.transform = "rotateY(0deg)";
+					init_round();
+				}
+			}, 5000);
+		}
+		time--;
+		document.getElementById("timer_blind_test").innerText = time;
+	}
+
+	function show_response() {
+
+		document.getElementById('img_response').src = playlist[round].img;
+		document.getElementById('para_response').innerText = playlist[round].title;
+	}
+
+	function player_404(id) {
+
+		const pf = document.createElement('div');
+		pf.id = "player_frame_404";
+		document.body.append(pf);
+
+		preview = new YT.Player('player_frame_404', {
+      		videoId: id,
+      		playerVars: {
+      			playsinline: 1,
+      			controls: 0,
+          		rel: 0,
+          		showinfo: 0,
+          		fs: 0,
+          		ecver: 2,
+          		origin:'http://lvh.me/music_room/',
+          		disablekb: 1,
+          		start: 30,
+          		autoplay: 1
+      		},
+      		height: '0px',
+      		width: '0px',
+      		events: {
+      			'onStateChange': run_round
+      		}
+      	});
+	}
+</script>
+</body>
+</html>

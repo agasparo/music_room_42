@@ -1,0 +1,715 @@
+.playlist_room {
+	position: fixed;
+	right: 5%;
+	top: 10%;
+	width: 30vw;
+    height: 70vh;
+	background: transparent;
+	color: #FFF;
+    z-index: 20000;
+    text-shadow: 1px 1px 2px orange, 0 0 1em orangered, 0 0 1em black;
+    min-width: 235px;
+    min-height: 33%;
+    color: white;
+    scrollbar-color: orangered black;
+    scrollbar-width: thin;
+}
+
+#room_playlist_current {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 95%;
+    background: black;
+    opacity: 0.7;
+    overflow-y: auto;
+    color: #FFF;
+    overflow-x: hidden;
+    min-width: 20%;
+    min-height: 20%;
+    color: white;
+    scrollbar-color: orangered black;
+    scrollbar-width: thin;
+}
+
+#progress_bar_div {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 0.2vh;
+	background: white;
+}
+
+#progress_bar {
+	position: relative;
+	width: 0%;
+	height: 100%;
+	background: orangered;
+}
+
+.icon_lecteur {
+	font-size: 1.5rem;
+	padding: 1%;
+	cursor: pointer;
+    color: white;
+}
+
+.icon_lecteur:hover {
+	color: orangered;
+}
+
+#lecteur_timer {
+	padding: 3%;
+    color: white;
+}
+
+.sound_div {
+	position: absolute;
+    right: 0;
+    width: 19%;
+}
+
+.div_data {
+    width: 50%;
+    position: absolute;
+    left: 29%;
+    text-align: center;
+}
+
+#player {
+	display: none;
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 83vh;
+}
+ 
+#rooms_members {
+	position: fixed;
+    background: #1a1a1a;
+    width: 33%;
+    height: 84vh;
+    overflow-y: auto;
+    display: none;
+    z-index: 20050;
+    border-right: 1px solid #AB7468;
+}
+
+#rooms_members table {
+    color: wheat;
+    font-size: 1.3vh;
+}
+
+#rooms_members table td ,table th{
+    padding: 2%;
+}
+
+#rooms_members table:hover {
+    color: wheat;
+}
+
+#rooms_params {
+    position: fixed;
+    background: #1a1a1a;
+    width: 33%;
+    height: 84vh;
+    overflow-y: auto;
+    display: none;
+    z-index: 20050;
+    border-right: 1px solid #AB7468;
+}
+
+.table {
+	text-align: center;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.close_members {
+	position: absolute;
+    right: 1vw;
+    top: 1vw;
+    cursor: pointer;
+}
+
+#members_icon {
+	color: #AB7468;
+    font-size: 2rem;
+    position: fixed;
+    left: 1vw;
+    top: 12vh;
+    cursor: pointer;
+    z-index: 20000;
+}
+
+#members_icon:hover {
+	color: #fd7e14;
+}
+
+#room_chat {
+	position: fixed;
+    width: 45vw;
+    height: 70vh;
+    left: 5vw;
+    top: 10vh;
+    background: transparent;
+    color: #FFF;
+    text-shadow: 1px 1px 2px orange, 0 0 1em orangered, 0 0 1em black;
+    z-index: 20000;
+    min-height: 290px;
+    min-width: 245px;
+    max-height: 77vh;
+}
+
+#room_chat h4 {
+    z-index: 1;
+}
+
+#chat_body {
+	position: absolute;
+    top: 7%;
+    left: 0;
+    background: black;
+    opacity: 0.7;
+    width: 100%;
+    height: 93%;
+    text-align: center;
+    overflow-y: auto;
+    scrollbar-color: orangered black;
+    scrollbar-width: thin;
+    word-wrap:break-word;
+    margin:0;
+    border-radius: 15px 0 0 0;
+}
+
+#chat_body div{
+    min-height: 160px;
+}
+
+#chat_bottom {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8vh;
+    border-top: 1px solid #AB7468;
+    top: 100%;
+    border-radius: 0 0 15px 0;
+    background: #1a1a1a;
+    overflow-y: hidden;
+}
+
+#chat_room_input {
+	position: relative;
+    width: 90%;
+    height: 100%;
+    resize: none;
+    background: #1a1a1a;
+    border: #1a1a1a;
+    caret-color: orangered;
+}
+
+#img_emoji {
+    position: absolute;
+    top: 16%;
+    right: 5%;
+    height: 1.3vw;
+    width: auto;
+    cursor: pointer;
+}
+
+#emoji_show {
+
+    position: absolute;
+    background: #343a40;
+    height: 40%;
+    width: 45%;
+    bottom: 0;
+    right: 0;
+    overflow-y: auto;
+    display: none;
+    overflow-x: hidden;
+}
+
+.emojis {
+    cursor: pointer;
+    padding: 1%;
+}
+
+#img_gif {
+    position: absolute;
+    top: 16%;
+    right: 0;
+    height: 1.3vw;
+    width: auto;
+    cursor: pointer;
+}
+
+#gif_show {
+    position: absolute;
+    background: #343a40;
+    height: 40%;
+    width: 45%;
+    bottom: 0;
+    right: 0;
+    overflow-y: auto;
+    display: none;
+}
+
+.gif_box {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 50%;
+    padding: 0.5%;
+    cursor: pointer;
+}
+
+.img_gif {
+    width: 100%;
+    height: 100%;
+}
+
+.gif_group {
+    width: 40%;
+    margin-left: 37%;
+}
+#chat_icon {
+    position: fixed;
+    font-size: 2rem;
+    top: 22vh;
+    left: 0.7vw;
+    color: #AB7468;
+    cursor: pointer;
+    z-index: 20000;
+}
+
+#chat_icon:hover {
+    color: #fd7e14;
+}
+
+.infos {
+    position: absolute;
+    left: 17%;
+    width: 20%;
+
+}
+#imginfos {
+    position: absolute;
+    left: 1%;
+    width: 15%;
+    max-width: 100px;
+}
+
+.message {
+    margin-left: 40%;
+    width: 59%;
+    margin-bottom: 3%;
+    padding: 2%;
+}
+
+.prop {
+    margin-left: 42%;
+    width: 50%;
+    margin-bottom: 3%;
+    padding: 2%;
+}
+
+#playlist_icon {
+    position: fixed;
+    font-size: 2rem;
+    top: 32vh;
+    left: 1vw;
+    color: #AB7468;
+    cursor: pointer;
+    z-index: 20000;
+}
+
+#playlist_icon:hover {
+    color: #fd7e14;
+}
+
+#video_icon {
+    position: fixed;
+    font-size: 2rem;
+    top: 42vh;
+    left: 1vw;
+    color: #AB7468;
+    cursor: pointer;
+    z-index: 20000;
+}
+
+#video_icon:hover {
+    color: #fd7e14;
+}
+
+#chache_player {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 83vh;
+    z-index: 2;
+}
+
+#img_current_music {
+    position: relative;
+    height: 5vh;
+    margin-left: 5%;
+    border: solid 1px orangered;
+}
+
+#title_current_music {
+    padding-left: 2%;
+    color: white;
+}
+
+.div_playlist {
+    position: relative;
+    background: black;
+    width: 100%;
+    height: 12vh;
+    min-height: 100px;
+    border-top: 1px solid #AB7468;
+    cursor: pointer;   
+    text-shadow: 1px 1px 2px orange, 0 0 1em orangered, 0 0 1em black;
+}
+
+.div_playlist:hover {
+    background: black;
+}
+
+.playlist_title {
+    position: fixed;
+    z-index: 1;
+}
+
+.div_playlist p {
+    margin: 1% 10% 2% 33%;
+    text-align: center;
+}
+
+.img_playlist {
+    position: absolute;
+    height: 60%;
+    float: left;
+    left: 1%;
+    top: 20%;
+    border-radius: 15px;
+}
+
+
+
+#lyrics_icon {
+
+    position: fixed;
+    font-size: 2rem;
+    top: 52vh;
+    left: 1vw;
+    color: #AB7468;
+    cursor: pointer;
+    z-index: 20000;
+}
+
+#lyrics_icon:hover {
+    color: #fd7e14;
+}
+
+#room_lyrics {
+    position: fixed;
+    text-shadow: 1px 1px 2px orange, 0 0 1em orangered;
+    width: 30vw;
+    height: 70vh;
+    left: 5vw;
+    top: 10vh;
+    color: #FFF;
+    z-index: 20000;
+    display: none;
+    max-height: 77vh;
+}
+
+#lyrics_text {
+    
+    background: black;
+    opacity: 0.7;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 100%;
+    height: 95%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    scrollbar-color: orangered black;
+    scrollbar-width: thin;
+    min-height: 120px;
+    min-width: 100px;
+}
+
+#AlertMembers {
+    position: fixed;
+    z-index: 30000;
+    top: 10vh;
+    right: 1vw;
+    width: 26vw;
+    display: none;
+}
+
+#para_icon {
+    position: fixed;
+    font-size: 2rem;
+    top: 62vh;
+    left: 1vw;
+    color: #AB7468;
+    cursor: pointer;
+    z-index: 20000;
+}
+
+#para_icon:hover {
+    color: #fd7e14;
+}
+
+.tool_icon_bar {
+    display: block;
+}
+
+.params_divs {
+    padding: 5%;
+}
+
+.input_params_background {
+    background-color: transparent;
+    color: #919aa1;
+    border-bottom: 1px solid #919aa1; 
+}
+
+.input_params_background:focus {
+    background-color: transparent;
+}
+
+.label_params {
+    color: #919aa1;
+}
+
+#rooms_fats_food {
+    position: fixed;
+    background: #1a1a1a;
+    width: 40vw;
+    height: 84vh;
+    overflow-y: auto;
+    display: none;
+    z-index: 20050;
+    border-right: 1px solid #AB7468;
+    color: white;
+    text-shadow: 1px 1px 2px orange, 0 0 1em orangered;
+    scrollbar-color: orangered black;
+    scrollbar-width: thin;
+}
+
+#rooms_fats_food td{
+    color: white;
+    text-shadow: 1px 1px 2px orange, 0 0 1em orangered;
+    scrollbar-color: orangered black;
+    scrollbar-width: thin;
+}
+
+#food_icon {
+    position: fixed;
+    font-size: 2rem;
+    top: 72vh;
+    left: 0.7vw;
+    color: #AB7468;
+    cursor: pointer;
+    z-index: 20000;
+}
+
+#food_icon:hover {
+    color: #fd7e14;
+}
+
+.mcdo_menu {
+    cursor: pointer;
+}
+
+#menu_content_mcdo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.div_mcdo_food {
+    position: relative;
+    width: 33%;
+    height: 12%;
+    text-align: center;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.div_mcdo_food:hover {
+    background: grey;
+}
+
+.img_mcdo_food {
+    position: relative;
+    width: auto;
+    height: 69%;
+    max-width: 90%;
+}
+
+#AlertCommandeMcdoS {
+    position: fixed;
+    z-index: 30000;
+    top: 10vh;
+    right: 1vw;
+    width: 26vw;
+    display: none;
+}
+
+#AlertCommandeMcdoF {
+    position: fixed;
+    z-index: 30000;
+    top: 10vh;
+    right: 1vw;
+    width: 26vw;
+    display: none;
+}
+
+#AlertCommandeMcdoSendS {
+    position: fixed;
+    z-index: 30000;
+    top: 10vh;
+    right: 1vw;
+    width: 26vw;
+    display: none;
+}
+
+#AlertCommandeMcdoSendF {
+    position: fixed;
+    z-index: 30000;
+    top: 10vh;
+    right: 1vw;
+    width: 26vw;
+    display: none;
+}
+
+.img_commande_mcdo {
+    position: relative;
+    height: 22%;
+    width: auto;
+}
+
+.li_commande_mcdo {
+    padding: 1%;
+}
+
+.input_macdo_commande {
+    position: relative;
+    width: 80%;
+    height: 3%;
+}
+
+.playing {
+
+    position: absolute;
+    height: 6vh;
+    width: 6vh;
+    float: left;
+    left: 2%;
+    top: 3vh;
+    z-index: 2;
+}
+
+.bar_playing {
+    background: #FFF;
+    bottom: 1%;
+    height: 100%;
+    position: absolute;
+    width: 19%;
+    animation: sound 0ms -800ms linear infinite alternate;
+}
+
+@keyframes sound {
+    0% {
+        opacity: 0.75;
+        height: 1%; 
+    }
+    100% {
+        opacity: 1;       
+        height: 50%;        
+    }
+}
+
+.bar_playing:nth-child(1)  { left: 20%; animation-duration: 733ms; }
+.bar_playing:nth-child(2)  { left: 40%; animation-duration: 507ms; }
+.bar_playing:nth-child(3)  { left: 60%; animation-duration: 658ms; }
+
+.cache_sound {
+    position: fixed;
+    z-index: 500000;
+    background: black;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text_show {
+    position: relative;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #000, orangered);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: soundenable 3s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+#soundok {
+    color: orangered;
+}
+@keyframes soundenable  {
+
+    0% {
+        background-position: -500%;
+    }
+    100% {
+        background-position: 500%;
+    }
+}
+
+.enablesound {
+    position: absolute;
+    bottom: 20%;
+}
+
+.player_preview_frame {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 125px;
+}
+
+.player_preview_frame_body {
+    position: relative;
+    pointer-events: none;
+    width: 100%;
+    height: 125px;
+    border: none;
+}
+
+.player_preview_frame img {
+    height: 80%;
+    width: auto;
+}

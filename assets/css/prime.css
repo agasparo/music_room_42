@@ -1,0 +1,29 @@
+body {
+	background-color: black;
+}
+
+.img_logo {
+
+	position: absolute;
+    height: 110%;
+    width: auto;
+    top: 0;
+    left: 2vw;
+}
+
+.prime_desc {
+
+	background-color: wheat;
+	position: fixed;
+	top: 20vh;
+	width: 80vw;
+	left: 10vw;
+	border-radius: 15px;
+	border: solid 1px orangered;
+}
+
+.prime_desc .btn {
+	border-radius: 15px;
+	border: solid 1px orangered;
+}
+}

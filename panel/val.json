@@ -1,0 +1,97 @@
+{
+	"Site": {
+		"lang": "fr"
+	},
+	"Template": {
+		"home": {
+			"index": {
+				"title": "music_room",
+				"h_css": "assets/css/index.min.css",
+				"s_css": "assets/css/home_index.css",
+				"m_css": "assets/css/mobile.css",
+				"scroll_css": "assets/css/scroll.min.css",
+				"js": "assets/js/bootstrap.min.js",
+				"scroll_js": "assets/js/scroll.min.js",
+				"form_js": "assets/js/form_home.js"
+			},
+			"connection": {
+				"title": "Connexion",
+				"input1": "Mail",
+				"input2": "Mot de passe",
+				"s1": 64,
+				"s2": 32,
+				"submit": "Connexion / Inscription",
+				"mdp_oubli": "Mot de passe oublié ?"
+			},
+			"inscription": {
+				"title": "Inscription",
+				"input1": "Nom",
+				"input2": "Prénom",
+				"input3": "Mail",
+				"input4": "Mot de passe",
+				"input5": "Confirmer votre mot de passe",
+				"s1": 64,
+				"s2": 32,
+				"submit": "Inscription"
+			}
+		},
+		"prime": {
+			"index": {
+				"title": "music_room prime",
+				"scroll_js": "assets/js/scroll.min.js",
+				"scroll_css": "assets/css/scroll.min.css",
+				"h_css": "assets/css/index.min.css",
+				"js": "assets/js/bootstrap.min.js",
+				"prime_js": "assets/js/prime.js",
+				"prime": "assets/css/prime.css"
+			}
+		},
+		"404": {
+			"index": {
+				"title": "404 clicker",
+				"h_css": "assets/css/index.min.css",
+				"404_css": "assets/css/404.css",
+				"404_js": "assets/js/404.js"
+			}
+		},
+		"rooms": {
+			"index": {
+				"title": "music_room music mode",
+				"h_css": "../assets/css/index.min.css",
+				"s_css": "../assets/css/home_index.css",
+				"r_css": "../assets/css/room_index.css",
+				"m_css": "../assets/css/mobile.css",
+				"roomsjs": "../assets/js/rooms.js"
+			}
+		},
+		"api": {
+			"home": {
+				"title": "api music_room",
+				"h_css": "../assets/css/index.min.css",
+				"js": "../assets/js/bootstrap.min.js",
+				"json_css": "../assets/css/jquery.json-viewer.css",
+				"json_js": "../assets/js/jquery.json-viewer.js",
+				"b_css": "../assets/css/api.css",
+				"b_js": "../assets/js/api.js"
+			}
+		},
+		"user": {
+			"index": {
+				"title": "music_room profil",
+				"h_css": "../assets/css/index.min.css",
+				"s_css": "../assets/css/home_index.css",
+				"r_css": "../assets/css/user_index.css",
+				"m_css": "../assets/css/mobile.css",
+				"userjs": "../assets/js/user.js"
+			}
+		},
+		"reset": {
+			"index": {
+				"title": "reset your password",
+				"h_css": "../assets/css/index.min.css",
+				"reset_css": "../assets/css/reset.css",
+				"reset_js": "../assets/js/reset.js"
+			}
+		}
+	}
+}

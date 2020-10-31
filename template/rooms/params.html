@@ -1,0 +1,35 @@
+<div class="params_divs">
+	<div class="form-group">
+		<label class="col-form-label" for="room_name">Nom de la room</label>
+		<input type="text" class="form-control input_params_background" placeholder="Default input" id="room_name" value="{{ .room_name }}" readonly style="background-color: #1a1a1a;">
+	</div>
+	<div class="form-group">
+		<p>Visibilite</p>
+		<div class="custom-control custom-switch">
+			<input type="checkbox" {{ .disabled }} class="custom-control-input" id="public_privee" {{ .world_views }}>
+			<label class="custom-control-label label_params" for="public_privee">Public / Privee</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">creneau horraire</label>
+		<input type="number" {{ .disabled }} class="form-control input_params_background" placeholder="heure de debut" id="params_h_d" value="{{ .room_h_d }}" min="0" max="23" style="background-color: #1a1a1a;"><br>
+		<input type="number" {{ .disabled }} class="form-control input_params_background" placeholder="heure de fin" id="params_h_f" value="{{ .room_d_f }}" min="0" max="24" style="background-color: #1a1a1a;">
+	</div>
+	<div class="form-group">
+		<label class="control-label">Localisation</label>
+		<div class="form-group">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text clickable" id="params_loca_r"><i class="fa fa-times" aria-hidden="true"></i></span>
+				</div>
+				<input type="text" class="form-control input_params_background" value="{{ .room_loc }}" readonly style="background-color: #1a1a1a;" id="loc_input">
+				<div class="input-group-append clickable">
+					<span class="input-group-text" id="params_loca"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<p class="text-muted">Statut de votre room : </p>
+	<p class="text-muted" id="params_status">{{ .rooms_details_p }}</p>
+</div>

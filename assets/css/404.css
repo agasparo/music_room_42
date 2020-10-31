@@ -1,0 +1,200 @@
+body {
+	background-color: black;
+	overflow: hidden;
+}
+
+.img_logo {
+
+	position: absolute;
+    height: 110%;
+    width: auto;
+    top: 0;
+    left: 2vw;
+}
+
+.img_clicker {
+	position: fixed;
+    font-size: 30vh;
+    top: 35vh;
+    left: 37vw;
+    cursor: pointer;
+    color: #FFFH;
+    text-shadow: #FAD 1px 0 10px, #FAD 1px 0 20px;
+    z-index: 100;
+    animation: colorChange 5s linear infinite
+}
+
+@keyframes colorChange {
+
+	0% {
+		filter: hue-rotate(0deg);
+	}
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
+
+.clicker_res {
+	position: fixed;
+    width: 100%;
+    text-align: center;
+    top: 13vh;
+}
+
+section {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+section .wave {
+
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 150px;
+	background-image: url("/music_room/assets/images/wave.png");
+	background-size: 1000px 150px;
+}
+
+section .wave.wave1 {
+
+	animation: animate 30s linear infinite;
+	z-index: 1000;
+	opacity: 1;
+	animation-delay: 0s
+	bottom: 0;
+}
+
+section .wave.wave2 {
+
+	animation: animate2 15s linear infinite;
+	z-index: 999;
+	opacity: 0.5;
+	animation-delay: -5s
+	bottom: 10px;
+}
+
+section .wave.wave3 {
+
+	animation: animate 30s linear infinite;
+	z-index: 998;
+	opacity: 0.2;
+	animation-delay: -2s
+	bottom: 15px;
+}
+
+section .wave.wave4 {
+
+	animation: animate2 7s linear infinite;
+	z-index: 997;
+	opacity: 0.7;
+	animation-delay: -5s
+	bottom: 20px;
+}
+
+@keyframes  animate {
+
+	0% {
+		background-position-x: 0; 
+	}
+	100% {
+		background-position-x: 1000px; 
+	}
+}
+
+@keyframes  animate2 {
+
+	0% {
+		background-position-x: 0; 
+	}
+	100% {
+		background-position-x: -1000px; 
+	}
+}
+
+.shop {
+	position: fixed;
+    right: 5vw;
+    top: 9vh;
+    width: 30vw;
+    height: 85vh;
+    background: #1a1a1a;
+    z-index: 100;
+    border-radius: 5px;
+    display: flex;
+}
+
+.flexon {
+	position: absolute;
+    top: 10%;
+    height: 90%;
+    width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	overflow-y: scroll;
+}
+
+.shop_bloc {
+	position: relative;
+	width: 100%;
+	height: 20%;
+	display: flex;
+}
+
+.shop_img {
+	width: 33%;
+	height: 100%;
+	display: flex;
+	padding: 5%;
+	justify-content: center;
+	align-items: center;
+}
+
+.shop_how_many {
+	width: 33%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.shop_buy, .buy_upgrade {
+	width: 33%;
+	height: 100%;
+	min-height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+h1, h6 {
+	text-align: center;
+	padding: 5%;
+	color: #FFF;
+}
+
+.upgrade {
+	position: fixed;
+    left: 5vw;
+    top: 20vh;
+    width: 25vw;
+    height: 50vh;
+    background: #1a1a1a;
+    z-index: 100;
+    border-radius: 5px;
+    display: flex;
+}
+
+.flexon_upgrade {
+	position: absolute;
+    top: 10%;
+    height: 90%;
+    width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	overflow-y: scroll;
+}

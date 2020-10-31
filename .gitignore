@@ -1,0 +1,7 @@
+/var
+/var/logs
+/vendor/
+vendor/
+vendor/*
+/vendor/*
+node_modules/*
