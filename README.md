@@ -60,3 +60,26 @@ Bonus :
 		- blindtest pour l'offre gratuite 
 
 		- clicker-game pour l'offre payante
+
+
+Page acceuil : 
+![Alt text](img/acceuil.png?raw=true "Title")
+![Alt text](img/index.png?raw=true "Title")
+
+![Alt text](img/lobby_room.png?raw=true "Title")
+![Alt text](img/room_acc.png?raw=true "Title")
+![Alt text](img/room_lyrics.png?raw=true "Title")
+![Alt text](img/room_clip.png?raw=true "Title")
+![Alt text](img/room_cmd.png?raw=true "Title")
+![Alt text](img/room_gest.png?raw=true "Title")
+![Alt text](img/room_set.png?raw=true "Title")
+
+![Alt text](img/profil_top.png?raw=true "Title")
+![Alt text](img/profil_low.png?raw=true "Title")
+
+
+
+![Alt text](img/blind_test.png?raw=true "Title")
+![Alt text](img/clicker.png?raw=true "Title")
+
+
